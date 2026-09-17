@@ -65,6 +65,17 @@ You must search across the ENTIRE font universes of:
 STEP 1: MICROSCOPIC GLYPH ISOLATION & REJECTION RULES:
 For EVERY visible letter in the image, you must strictly test:
 
+0. STENCIL / 45° CHAMFERED STEM CUTAWAYS (CRITICAL STRUCTURAL CHECK):
+   - Examine the lower base of main vertical stems (e.g. on 'E', 'L', 'N', 'Y'):
+     * Do the stems feature a sharp 45-DEGREE DIAGONAL STENCIL SLICE / CHAMFERED CUTAWAY right above the baseline (like in "NAYELLE")?
+     * If YES, this is unmistakably a LUXURY FASHION STENCIL DIDONE:
+       1. **Butler Stencil** (by Fabian De Smet - BeFonts/DaFont) - The primary world-famous luxury fashion stencil with 45° chamfered stem cuts and razor Didone contrast.
+       2. **Quiche Stencil** (by Connary Fagen)
+       3. **Dala Floda** (Commercial Type)
+       4. **Port Stencil** (Thomas Jockin)
+       5. **Playfair Display Stencil**
+     * ⚠️ STRICT REJECTION RULE: If stems have 45° diagonal stencil cutaways, you are STRICTLY FORBIDDEN from suggesting continuous solid-stem fonts like Lust Display, Giaza, Didot, or Bodoni!
+
 1. Capital 'A' (APEX & CROSSBAR):
    - Is the apex a TRUNCATED FLAT-TOPPED PLATEAU (horizontal cut at the top, like Nexa, Urbanist, Campton, Mont, Avenir, Poppins)?
    - Or is it a SHARP POINTED TRIANGLE / NEEDLE (like Futura, Century Gothic, Tenor Sans, Avant Garde)?

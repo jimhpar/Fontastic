@@ -1042,6 +1042,42 @@ const INITIAL_FONTS: FontItem[] = [
       width: 'normal',
       aperture: 'open'
     }
+  },
+  {
+    _id: 'font_butler_stencil',
+    family: 'Butler Stencil',
+    category: 'display',
+    source: 'befonts',
+    license: 'Free for commercial & personal use',
+    downloadUrl: 'https://befonts.com/butler-font.html',
+    tags: ['stencil', 'didone', 'luxury', 'chamfered', 'apparel', 'fashion', 'palazzo', 'nayelle'],
+    features: {
+      serifType: 'unbracketed',
+      xHeight: 'high',
+      contrast: 'high',
+      weight: 'bold',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_quiche_stencil',
+    family: 'Quiche Stencil',
+    category: 'display',
+    source: 'myfonts',
+    license: 'Commercial',
+    downloadUrl: 'https://www.myfonts.com/collections/quiche-stencil-font-connary-fagen',
+    tags: ['stencil', 'didone', 'luxury', 'fashion', 'display'],
+    features: {
+      serifType: 'bracketed',
+      xHeight: 'high',
+      contrast: 'high',
+      weight: 'bold',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
   }
 ];
 
