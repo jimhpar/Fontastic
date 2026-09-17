@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Fontastic",
+    "slug": "fontastic",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Fontastic requires camera access to capture typography from posters, signs, and books to identify matching fonts.",
+        "NSPhotoLibraryUsageDescription": "Fontastic requires photo library access to let you select typography screenshots and images for font identification."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    }
+  }
+}

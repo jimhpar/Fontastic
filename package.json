@@ -1,0 +1,28 @@
+{
+  "name": "fontastic-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm --workspace=@fontastic/api run dev",
+    "dev:admin": "npm --workspace=@fontastic/admin run dev",
+    "dev:desktop": "npm --workspace=@fontastic/desktop run dev",
+    "start:desktop": "npm --workspace=@fontastic/desktop run start",
+    "dev:mobile": "npm --workspace=@fontastic/mobile run start",
+    "build": "npm --workspaces run build --if-present"
+  },
+  "keywords": [
+    "fonts",
+    "typography",
+    "font-finder",
+    "font-manager"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.4.11"
+  }
+}

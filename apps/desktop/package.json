@@ -1,0 +1,29 @@
+{
+  "name": "@fontastic/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "tsc && vite build",
+    "preview": "vite preview --port 3000",
+    "start": "electron electron/main.cjs"
+  },
+  "dependencies": {
+    "@fontastic/design-tokens": "*",
+    "@fontastic/shared-types": "*",
+    "canvas-confetti": "^1.9.3",
+    "lucide-react": "^0.378.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "electron": "^33.4.11",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
+  }
+}
