@@ -66,17 +66,40 @@ export const FontResultModal: React.FC<FontResultModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleInstallFont = (font: FontItem) => {
+  const handleInstallFont = async (font: FontItem) => {
     setInstallingId(font._id);
-    setTimeout(() => {
-      setInstalledFonts(prev => ({ ...prev, [font._id]: true }));
+    try {
+      if ((window as any).electronAPI?.installFont) {
+        const res = await (window as any).electronAPI.installFont(font);
+        if (res?.success) {
+          setInstalledFonts(prev => ({ ...prev, [font._id]: true }));
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        }
+      } else {
+        // Fallback when previewing in regular browser
+        if (font.downloadUrl) {
+          window.open(font.downloadUrl, '_blank');
+        }
+        setInstalledFonts(prev => ({ ...prev, [font._id]: true }));
+      }
+    } catch (err) {
+      console.error('Failed to install font:', err);
+    } finally {
       setInstallingId(null);
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    }, 750);
+    }
+  };
+
+  const handleDirectDownload = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    if ((window as any).electronAPI?.openExternal) {
+      (window as any).electronAPI.openExternal(url);
+    } else {
+      window.open(url, '_blank');
+    }
   };
 
   const handleTriggerRematch = async () => {
@@ -399,16 +422,21 @@ export const FontResultModal: React.FC<FontResultModalProps> = ({
 
                     <div style={{ display: 'flex', gap: 8 }}>
                       {font.downloadUrl && (
-                        <a
-                          href={font.downloadUrl}
-                          target="_blank"
-                          rel="noreferrer"
+                        <button
+                          onClick={e => font.downloadUrl && handleDirectDownload(e, font.downloadUrl)}
                           className="btn-secondary"
-                          style={{ textDecoration: 'none', fontSize: 13, padding: '7px 14px', display: 'flex', alignItems: 'center', gap: 6 }}
+                          style={{
+                            fontSize: 13,
+                            padding: '7px 14px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            cursor: 'pointer'
+                          }}
                         >
                           <Download size={14} />
                           <span>Direct Download</span>
-                        </a>
+                        </button>
                       )}
 
                       <button

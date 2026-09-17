@@ -47,43 +47,54 @@ export async function identifyFontWithGemini(
 Analyze this cropped image of text with microscopic typographic precision.
 ${userCorrectedText ? `User hint / corrected text: "${userCorrectedText}".` : ''}
 
-CRITICAL FORENSIC METHODOLOGY:
-Do NOT guess popular default fonts (like Helvetica, Arial, or Roboto) unless every micro-detail matches 100%. Most modern streetwear, sportswear, tech, and poster designs use specialized modern geometric, athletic, or branding display typefaces.
+CRITICAL FORENSIC METHODOLOGY & ZERO-HALLUCINATION RULES:
+Never guess common default fonts (like Helvetica, Arial, Roboto, or standard Gilroy/Poppins) unless every microscopic detail matches 100%. Fashion banners, cosmetics, apparel, luxury, and streetwear brands deliberately use distinctive geometric, editorial, or fashion display typefaces with unique letterform traits.
 
-STEP 1: GLYPH FORENSICS (Examine each visible letter individually):
-1. Letter 'W':
-   - Bottom vertices: Are they sharp pointed tips, angled points, or flat horizontal cuts?
-   - Center apex: Does the center V meet at the top cap-height, or does it stop lower?
-   - Diagonals: Do the strokes cross, join, or have uniform thickness?
-2. Letter 'R':
-   - Leg / Tail: Is the leg a STRAIGHT DIAGONAL stem (e.g. Montserrat, Gilroy, Gotham, DIN, Akira, Barlow, Integral CF, Futura)? Or is it a CURVED leg with a horizontal hook (e.g. Helvetica, Neue Haas Grotesk)?
-   - Bowl: Where does the leg intersect the bowl?
-3. Letter 'A':
-   - Apex: Sharp pointed triangle apex, or blunt flat-cut top?
-   - Crossbar: Low, centered, or high?
-4. Letter 'E':
-   - Terminal cuts: Are the top/bottom arm ends cut horizontally at 90°, vertically, or diagonally?
-   - Middle arm: Is it significantly shorter or near equal?
-5. Proportions & Category:
-   - Is it modern athletic/sports, geometric sans, extended/wide display, or neo-grotesque?
+STEP 1: MICROSCOPIC GLYPH-BY-GLYPH FORENSICS:
 
-STRICT NEGATIVE CONSTRAINT:
-- If the letter 'R' has a STRAIGHT DIAGONAL leg, it CANNOT be Helvetica or Neue Haas Grotesk!
-- If the letter 'W' has sharp points or center apex reaching full height, it CANNOT be Helvetica!
-- In modern activewear / sportswear (like Fabrilife, Nike, Adidas posters), prioritize contemporary athletic & geometric fonts such as:
-  Akira Expanded, Integral CF, Montserrat Bold, Gilroy Bold, Gotham Bold, Barlow Bold/Black, DIN 2014, Space Grotesk, Tusker Grotesk, Industry, Prompt, Nexa, Proxima Nova, Unbounded, Outfit, Syne, Cabinet Grotesk, Microgramma, Eurostile.
+1. Letter 'a' (Lowercase) - CRITICAL FIRST CHECK:
+   - Is it SINGLE-STOREY ('ɑ' - a clean circle or oval with a vertical right stem, NO top hook)?
+     * Examples: Century Gothic, Futura, Sofia Pro, ITC Avant Garde, Nexa, Josefin Sans, Avenir, Tenor Sans, Product Sans, Comfortaa, Circular.
+   - Or is it DOUBLE-STOREY ('a' - has a top curved hood/arc over the bowl)?
+     * Examples: Gilroy, Poppins, Helvetica, Inter, Roboto, Gotham, Proxima Nova.
+   - ⚠️ STRICT RULE: If the letter 'a' in the image is SINGLE-STOREY, you are STRICTLY FORBIDDEN from suggesting Gilroy, Poppins, Helvetica, Roboto, or Inter as matches!
+
+2. Letter 'v' / 'V' & 'w' / 'W' (Vertices & Apex):
+   - Bottom vertex of 'v'/'V': Is it an ULTRA-SHARP acute needle/pinpoint vertex? Or does it have a blunt, flat horizontal cut, or rounded corner?
+   - Stroke weighting of 'v': Is the left stroke heavy and right stroke thin/hairline, or uniform monoline?
+   - Vertices of 'w'/'W': Sharp points vs flat horizontal bases. Does the center vertex meet at the top cap-height, or remain lower?
+
+3. Letter 'A' (Capital):
+   - Apex: Sharp pointed needle apex (sharp triangle), blunt flat-top horizontal cut, or rounded?
+   - Crossbar position: Low fashion crossbar (e.g. Josefin Sans, Tenor Sans, Century Gothic, Marcellus) vs centered crossbar?
+
+4. Letter 'i' & 'j' (Tittle / Dot):
+   - Shape of dot: Is it a perfect circular dot, a square/rectangular block, a diamond, or an oval?
+   - Spacing: Does the dot float high above the stem or sit tight?
+
+5. Letter 'R' & 'k' (Legs):
+   - Is the leg of 'R' a STRAIGHT DIAGONAL stroke (e.g. Montserrat, Futura, Sofia, Avant Garde, DIN)?
+   - Or is it a CURVED leg with a horizontal foot hook (e.g. Helvetica, Neue Haas)?
+
+6. Letter 't':
+   - Top cut: Flat horizontal cut, diagonal angle cut, or pointed?
+   - Base: Does it curve to the right, or is it a straight vertical cross?
+
+7. General Aesthetics & Foundries:
+   - Fashion / Editorial / Luxury: Tenor Sans, Sofia Pro, Century Gothic, Josefin Sans, Futura, Avenir, Classico, Didot, Bodoni, Cormorant, Syne, Tan Aegean, Voyage, Playfair.
+   - Streetwear / Athletic / Tech: Akira Expanded, Integral CF, Space Grotesk, Druk Wide, Tusker Grotesk, Microgramma, Orbitron, Prompt, Michroma.
 
 OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
 {
   "detectedText": "Exact text transcribed without error",
   "primaryFont": "Exact master commercial font or best matching typeface",
   "typographicAnalysis": {
-    "category": "sans-serif",
-    "width": "normal | expanded | condensed",
-    "weight": "bold | black | heavy",
-    "contrast": "low | monoline",
-    "serifType": "none",
-    "glyphForensics": "Describe the exact forensic shape of W vertices, R leg, and terminals",
+    "category": "sans-serif | serif | display",
+    "width": "condensed | normal | expanded",
+    "weight": "thin | light | regular | medium | bold | black",
+    "contrast": "monoline | low | medium | high",
+    "serifType": "none | bracketed | unbracketed | slab",
+    "glyphForensics": "Describe specifically: (1) single vs double-storey 'a', (2) sharpness of 'v' vertex, (3) apex and crossbar of 'A', (4) dot of 'i'",
     "description": "Concise forensic summary of why this font was identified"
   },
   "matches": [
@@ -93,12 +104,12 @@ OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
       "source": "google | dafont | adobe | myfonts",
       "similarity": 98,
       "matchedFeatures": [
-        "Identical straight diagonal R leg",
-        "Matching W vertex angle & apex height",
-        "Exact athletic headline weighting",
-        "Geometric terminal cuts"
+        "Single-storey lowercase 'a' with vertical right stem",
+        "Ultra-sharp acute pinpoint bottom vertex on 'v'",
+        "Pointed sharp apex on capital 'A'",
+        "Matching geometric circular proportions"
       ],
-      "downloadUrl": "specimen or download url",
+      "downloadUrl": "direct specimen or download url",
       "previewUrl": "preview url"
     }
   ]

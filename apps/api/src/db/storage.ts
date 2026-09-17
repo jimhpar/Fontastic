@@ -862,6 +862,132 @@ const INITIAL_FONTS: FontItem[] = [
       width: 'normal',
       aperture: 'open'
     }
+  },
+  {
+    _id: 'font_tenor_sans',
+    family: 'Tenor Sans',
+    category: 'sans-serif',
+    source: 'google',
+    license: 'SIL Open Font License',
+    downloadUrl: 'https://fonts.google.com/specimen/Tenor+Sans',
+    tags: ['fashion', 'single-storey-a', 'sharp-v', 'editorial', 'refined', 'luxury', 'apparel', 'co-ord'],
+    features: {
+      serifType: 'none',
+      xHeight: 'medium',
+      contrast: 'medium',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_futura',
+    family: 'Futura PT',
+    category: 'sans-serif',
+    source: 'adobe',
+    license: 'Commercial / Personal',
+    downloadUrl: 'https://fonts.adobe.com/fonts/futura-pt',
+    tags: ['geometric', 'single-storey-a', 'sharp-v', 'bauhaus', 'fashion', 'timeless'],
+    features: {
+      serifType: 'none',
+      xHeight: 'medium',
+      contrast: 'low',
+      weight: 'medium',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_century_gothic',
+    family: 'Century Gothic',
+    category: 'sans-serif',
+    source: 'myfonts',
+    license: 'Commercial',
+    downloadUrl: 'https://www.myfonts.com/collections/century-gothic-font-monotype-imaging',
+    tags: ['geometric', 'single-storey-a', 'sharp-v', 'circular', 'fashion', 'clean'],
+    features: {
+      serifType: 'none',
+      xHeight: 'high',
+      contrast: 'low',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_sofia_pro',
+    family: 'Sofia Pro',
+    category: 'sans-serif',
+    source: 'adobe',
+    license: 'Adobe Fonts Subscription',
+    downloadUrl: 'https://fonts.adobe.com/fonts/sofia',
+    tags: ['geometric', 'single-storey-a', 'sharp-v', 'branding', 'fashion', 'elegant'],
+    features: {
+      serifType: 'none',
+      xHeight: 'high',
+      contrast: 'low',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_josefin_sans',
+    family: 'Josefin Sans',
+    category: 'sans-serif',
+    source: 'google',
+    license: 'SIL Open Font License',
+    downloadUrl: 'https://fonts.google.com/specimen/Josefin+Sans',
+    tags: ['geometric', 'single-storey-a', 'sharp-v', 'art-deco', 'low-crossbar', 'fashion'],
+    features: {
+      serifType: 'none',
+      xHeight: 'medium',
+      contrast: 'low',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_nexa',
+    family: 'Nexa',
+    category: 'sans-serif',
+    source: 'dafont',
+    license: 'Free for personal use',
+    downloadUrl: 'https://www.dafont.com/nexa.font',
+    tags: ['geometric', 'single-storey-a', 'sharp-v', 'modern', 'apparel', 'clean'],
+    features: {
+      serifType: 'none',
+      xHeight: 'high',
+      contrast: 'low',
+      weight: 'bold',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_urbanist',
+    family: 'Urbanist',
+    category: 'sans-serif',
+    source: 'google',
+    license: 'SIL Open Font License',
+    downloadUrl: 'https://fonts.google.com/specimen/Urbanist',
+    tags: ['geometric', 'single-storey-a', 'sharp-v', 'modern', 'clean', 'fashion'],
+    features: {
+      serifType: 'none',
+      xHeight: 'high',
+      contrast: 'low',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
   }
 ];
 
