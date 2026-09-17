@@ -1,9 +1,10 @@
 import { GoogleGenAI } from '@google/genai';
+import { FontSource } from '@fontastic/shared-types';
 
 export interface GeminiMatchItem {
   family: string;
   category: 'serif' | 'sans-serif' | 'display' | 'handwriting' | 'monospace';
-  source: 'google' | 'dafont' | 'adobe' | 'myfonts';
+  source: FontSource;
   similarity: number;
   matchedFeatures: string[];
   downloadUrl: string;
@@ -26,8 +27,13 @@ export interface GeminiFontIdentificationResult {
 
 /**
  * World-class typographic visual font identification using Gemini Multimodal AI.
- * Recognizes exact text without OCR errors, and identifies the exact font family
- * and closest alternatives across Google Fonts, DaFont, Adobe Fonts, and MyFonts.
+ * Cross-references the full typographic universes of:
+ * - Fontshare (Indian Type Foundry)
+ * - DaFont / DaFontFree (40,000+ fonts)
+ * - BeFonts & Unblast
+ * - Awwwards Collections
+ * - Google Fonts (1,700+ families)
+ * - High-end Foundries (Sharp Type, Fontfabric, DJR, Pangram Pangram, Linotype, Monotype)
  */
 export async function identifyFontWithGemini(
   base64Image: string,
@@ -45,73 +51,73 @@ export async function identifyFontWithGemini(
 
     const prompt = `You are WhatTheFont / Fontastic AI, the world's most capable forensic typography identification engine.
 Analyze this cropped image of text with microscopic typographic precision.
-${userCorrectedText ? `User hint / corrected text: "${userCorrectedText}".` : ''}
+${userCorrectedText ? `User hint / transcribed text: "${userCorrectedText}".` : ''}
 
-CRITICAL FORENSIC METHODOLOGY & ZERO-HALLUCINATION RULES:
-Never guess random default fonts unless every microscopic detail matches 100%. Fashion banners, cosmetics, apparel, and modern e-commerce brands (such as Fabrilife, Zara, Mango) use signature geometric typefaces like Nexa, Urbanist, Campton, Mont, or Sofia Pro.
+SEARCH UNIVERSE:
+You must search across the ENTIRE font universes of:
+1. Fontshare (https://www.fontshare.com/ - Satoshi, Clash Display, Cabinet Grotesk, General Sans, Switzer, Ranade, Zodiak, Boska, Chillax, Melodrama, etc.)
+2. DaFont & DaFontFree (https://www.dafontfree.io/ / https://www.dafont.com/ - Nexa, Campton, Mont, Cera Pro, Gilroy, Akira Expanded, Integral CF, Lemon Milk, The Bold Font, Caviar Dreams, Coolvetica)
+3. BeFonts & Unblast (https://befonts.com/ & https://unblast.com/ - Ogg, Roslindale, Tan Aegean, Voyage, Formula, Mirtha Display, Blenny)
+4. Awwwards Collections (Neue Montreal, Neue Machina, Monument Extended, Editorial New, Woodland)
+5. Google Fonts (Urbanist, Faustina, Plus Jakarta Sans, Outfit, Syne, Tenor Sans, Space Grotesk, Cinzel, Prata, Bodoni Moda, Cormorant Garamond, Marcellus)
+6. Modern Type Foundries (Sharp Type, Fontfabric, DJR, Pangram Pangram, Linotype, Monotype, Commercial Type, Lineto)
 
-STEP 1: MICROSCOPIC GLYPH-BY-GLYPH FORENSICS:
+STEP 1: MICROSCOPIC GLYPH ISOLATION & REJECTION RULES:
+For EVERY visible letter in the image, you must strictly test:
 
-1. Capital 'A' (CRITICAL APEX CHECK):
-   - Is the apex a TRUNCATED FLAT-TOPPED PLATEAU (a flat horizontal cut at the top, e.g. Nexa, Urbanist, Campton, Mont, Avenir, Poppins)?
-   - Or is the apex a SHARP POINTED TRIANGLE / NEEDLE (e.g. Futura, Century Gothic, Tenor Sans, Avant Garde)?
-   - ⚠️ STRICT NEGATIVE CONSTRAINT: If capital 'A' has a FLAT-TOPPED horizontal plateau, you are STRICTLY FORBIDDEN from suggesting sharp-pointed fonts like Tenor Sans, Futura, or Century Gothic!
+1. Capital 'A' (APEX & CROSSBAR):
+   - Is the apex a TRUNCATED FLAT-TOPPED PLATEAU (horizontal cut at the top, like Nexa, Urbanist, Campton, Mont, Avenir, Poppins)?
+   - Or is it a SHARP POINTED TRIANGLE / NEEDLE (like Futura, Century Gothic, Tenor Sans, Avant Garde)?
+   - ⚠️ REJECTION RULE: If 'A' has a FLAT-TOPPED plateau, REJECT Futura, Century Gothic, and Tenor Sans!
 
 2. Lowercase 'a' (SINGLE-STOREY VS DOUBLE-STOREY):
-   - Is it SINGLE-STOREY ('ɑ' - geometric circular bowl with vertical right stem, NO top hook)?
-     * Check the bottom terminal of the stem:
-       - Straight vertical baseline drop without tail or spur (e.g. Nexa, Urbanist, Futura, Campton).
-       - Outward curved tail / spur (e.g. Sofia Pro, Comfortaa).
-   - Or is it DOUBLE-STOREY ('a' - has a top curved hood/arc over the bowl, e.g. Gilroy, Poppins, Helvetica, Inter, Roboto)?
-   - ⚠️ STRICT RULE: If lowercase 'a' is SINGLE-STOREY, NEVER suggest double-storey fonts (Gilroy, Poppins, Helvetica, Roboto, Inter)!
+   - Is it SINGLE-STOREY ('ɑ' - circle with vertical right stem, no top hood)?
+     * Terminal check: Does it drop straight to the baseline WITHOUT a tail (Nexa, Urbanist, Campton, Futura), or does it curve out into a spur/tail (Sofia Pro, Comfortaa)?
+   - Or is it DOUBLE-STOREY ('a' - has a top curved hood/arc over the bowl, like Gilroy, Poppins, Helvetica, Inter, Roboto)?
+   - ⚠️ REJECTION RULE: If 'a' is SINGLE-STOREY, REJECT Gilroy, Poppins, Helvetica, Roboto, and Inter!
 
-3. Letter 'e' (CRITICAL SERIF / CROSSBAR ANGLE CHECK):
-   - Is the crossbar inside the eye of 'e' SLANTED / ANGLED DIAGONALLY upwards at ~15-25° (Venetian / Calligraphic luxury serif, e.g. Ogg Roman, Roslindale, Faustina, ITC Galliard)?
-   - Or is it strictly FLAT HORIZONTAL (e.g. Cormorant Display, Didot, Bodoni, Playfair Display, Garamond)?
-   - ⚠️ STRICT NEGATIVE CONSTRAINT: If the letter 'e' has a SLANTED / ANGLED diagonal crossbar, you are STRICTLY FORBIDDEN from suggesting fonts with flat horizontal crossbars (such as Cormorant Display, Didot, Bodoni, or Playfair)!
+3. Lowercase 'e' (CROSSBAR ANGLE):
+   - Is the crossbar inside the eye of 'e' SLANTED / ANGLED DIAGONALLY upwards at ~15-25° (Venetian/calligraphic luxury serif, like Ogg Roman, Roslindale, Faustina, ITC Galliard)?
+   - Or is it strictly FLAT HORIZONTAL (like Cormorant Display, Didot, Bodoni, Playfair Display, Garamond)?
+   - ⚠️ REJECTION RULE: If 'e' has a SLANTED / ANGLED crossbar, REJECT Cormorant Display, Didot, Bodoni, and Playfair Display!
 
-4. Capital 'N' (Serif junctions & contrast):
-   - Check stroke contrast between thin vertical and thick diagonal, and bracketed serif terminals.
+4. Lowercase 'v' & 'V':
+   - Bottom vertex: Sharp acute needle convergence vs blunt shelf vs rounded curve.
 
-5. Signatures in Fashion, Apparel & Editorial Branding:
-   - **For High-Contrast Luxury Display Serifs with angled 'e' crossbar (e.g. Fabrilife "Neith"):**
-     1. **Ogg Roman** (Sharp Type) - Top signature luxury fashion serif with angled 'e' crossbar and calligraphic terminals.
-     2. **Roslindale Display** (DJR) - High-contrast editorial serif with slanted 'e' crossbar.
-     3. **Faustina** (Google Fonts) - Best free Google Font alternative with angled 'e' crossbar.
-     4. **ITC Galliard** (ITC / Matthew Carter)
-   - **For Geometric Sans with flat-topped 'A' + single-storey 'a' (e.g. Fabrilife "Aviana"):**
-     1. **Nexa** (Fontfabric)
-     2. **Urbanist** (Google Fonts)
-     3. **Campton**
-     4. **Mont**
+5. Lowercase 'i' & 'j':
+   - Tittle: Round circular dot vs square block vs diamond.
 
-OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
+6. Capital 'N':
+   - Contrast between thin vertical and thick diagonal; bracketed serifs.
+
+OUTPUT FORMAT:
+Return ONLY pure raw JSON (no markdown formatting blocks, no extra commentary):
 {
   "detectedText": "Exact text transcribed without error",
-  "primaryFont": "Exact master commercial font or best matching typeface",
+  "primaryFont": "Exact master font or closest visual twin from the libraries",
   "typographicAnalysis": {
     "category": "sans-serif | serif | display",
     "width": "condensed | normal | expanded",
     "weight": "thin | light | regular | medium | bold | black",
     "contrast": "monoline | low | medium | high",
     "serifType": "none | bracketed | unbracketed | slab",
-    "glyphForensics": "Describe: (1) flat-topped vs pointed apex on 'A', (2) single-storey 'a' with straight drop vs curved tail, (3) sharp vertex on 'v', (4) circular dot on 'i'",
-    "description": "Concise forensic summary of why this font was identified"
+    "glyphForensics": "Concise forensic breakdown of specific glyphs (A apex, a storey, e crossbar angle, v vertex, i tittle)",
+    "description": "Why this specific font was matched"
   },
   "matches": [
     {
       "family": "Exact font family name",
-      "category": "sans-serif | display | serif",
-      "source": "google | dafont | adobe | myfonts",
+      "category": "sans-serif | serif | display",
+      "source": "fontshare | befonts | unblast | dafont | google | adobe | myfonts",
       "similarity": 98,
       "matchedFeatures": [
-        "Truncated flat-topped horizontal apex on capital 'A'",
-        "Single-storey lowercase 'a' with straight vertical drop",
-        "Sharp acute bottom vertex on 'v'",
-        "Circular tittle on 'i'"
+        "Identical anatomical feature 1",
+        "Identical anatomical feature 2",
+        "Identical anatomical feature 3",
+        "Identical anatomical feature 4"
       ],
-      "downloadUrl": "direct specimen or download url",
-      "previewUrl": "preview url"
+      "downloadUrl": "Direct specimen/download URL on Fontshare, DaFontFree, BeFonts, Unblast, Google Fonts, or Foundry",
+      "previewUrl": "Direct specimen link"
     }
   ]
 }`;

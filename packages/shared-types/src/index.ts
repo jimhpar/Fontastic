@@ -1,6 +1,6 @@
 export type UserRole = 'admin' | 'user';
 
-export type FontSource = 'google' | 'dafont' | 'adobe' | 'myfonts';
+export type FontSource = 'google' | 'dafont' | 'adobe' | 'myfonts' | 'fontshare' | 'befonts' | 'unblast' | 'awwwards';
 export type FontCategory = 'sans-serif' | 'serif' | 'display' | 'handwriting' | 'monospace';
 
 export interface SubscriptionPlan {

@@ -49,16 +49,30 @@ export const FontResultModal: React.FC<FontResultModalProps> = ({
     }
   }, [detectedText, isOpen]);
 
-  // Dynamically load Google WebFonts so the typography renders authentically
+  // Dynamically load Google WebFonts & Fontshare typography so previews render authentically
   useEffect(() => {
     matches.forEach(item => {
       const family = item.font.family;
-      const id = 'webfont-' + family.replace(/\s+/g, '-');
+      const cleanSlug = family.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const id = 'webfont-' + cleanSlug;
+
       if (!document.getElementById(id)) {
         const link = document.createElement('link');
         link.id = id;
         link.rel = 'stylesheet';
-        link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@400;600;700;800;900&display=swap`;
+
+        // Known Fontshare families
+        const fontshareFonts = new Set([
+          'satoshi', 'clash-display', 'general-sans', 'cabinet-grotesk', 'switzer',
+          'zodiak', 'boska', 'chillax', 'ranade', 'melodrama', 'author', 'britney',
+          'gambetta', 'pally', 'excon', 'stardom', 'telma', 'tanker', 'synonym'
+        ]);
+
+        if (item.font.source === 'fontshare' || fontshareFonts.has(cleanSlug)) {
+          link.href = `https://api.fontshare.com/v2/css?f[]=${cleanSlug}@400,500,600,700,800&display=swap`;
+        } else {
+          link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@400;600;700;800;900&display=swap`;
+        }
         document.head.appendChild(link);
       }
     });
@@ -114,6 +128,10 @@ export const FontResultModal: React.FC<FontResultModalProps> = ({
 
   const getSourceBadgeClass = (source: string) => {
     switch (source) {
+      case 'fontshare': return 'source-fontshare';
+      case 'befonts': return 'source-befonts';
+      case 'unblast': return 'source-unblast';
+      case 'awwwards': return 'source-awwwards';
       case 'google': return 'source-google';
       case 'dafont': return 'source-dafont';
       case 'adobe': return 'source-adobe';

@@ -478,6 +478,58 @@ tr:hover td {
   border: 1px solid var(--border);
 }
 
+/* Source Badges */
+.badge-source {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+}
+.source-fontshare {
+  background: #f3e8ff;
+  color: #7e22ce;
+  border: 1px solid #d8b4fe;
+}
+.source-befonts {
+  background: #ccfbf1;
+  color: #0f766e;
+  border: 1px solid #5eead4;
+}
+.source-unblast {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+.source-awwwards {
+  background: #ffe4e6;
+  color: #be123c;
+  border: 1px solid #fda4af;
+}
+.source-google {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+.source-dafont {
+  background: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+.source-adobe {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+.source-myfonts {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
 .btn-primary {
   background-color: var(--brand);
   color: white;
