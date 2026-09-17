@@ -988,6 +988,60 @@ const INITIAL_FONTS: FontItem[] = [
       width: 'normal',
       aperture: 'open'
     }
+  },
+  {
+    _id: 'font_ogg_roman',
+    family: 'Ogg Roman',
+    category: 'serif',
+    source: 'myfonts',
+    license: 'Commercial',
+    downloadUrl: 'https://sharptype.co/typefaces/ogg/',
+    tags: ['luxury', 'editorial', 'angled-e', 'calligraphic', 'fashion', 'apparel', 'bohemian'],
+    features: {
+      serifType: 'bracketed',
+      xHeight: 'medium',
+      contrast: 'high',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_roslindale',
+    family: 'Roslindale Display',
+    category: 'serif',
+    source: 'myfonts',
+    license: 'Commercial',
+    downloadUrl: 'https://djr.com/roslindale',
+    tags: ['luxury', 'editorial', 'angled-e', 'high-contrast', 'fashion'],
+    features: {
+      serifType: 'bracketed',
+      xHeight: 'medium',
+      contrast: 'high',
+      weight: 'bold',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
+  },
+  {
+    _id: 'font_faustina',
+    family: 'Faustina',
+    category: 'serif',
+    source: 'google',
+    license: 'SIL Open Font License',
+    downloadUrl: 'https://fonts.google.com/specimen/Faustina',
+    tags: ['calligraphic', 'angled-e', 'editorial', 'literary', 'fashion'],
+    features: {
+      serifType: 'bracketed',
+      xHeight: 'medium',
+      contrast: 'medium',
+      weight: 'regular',
+      slant: 'upright',
+      width: 'normal',
+      aperture: 'open'
+    }
   }
 ];
 

@@ -65,19 +65,25 @@ STEP 1: MICROSCOPIC GLYPH-BY-GLYPH FORENSICS:
    - Or is it DOUBLE-STOREY ('a' - has a top curved hood/arc over the bowl, e.g. Gilroy, Poppins, Helvetica, Inter, Roboto)?
    - ⚠️ STRICT RULE: If lowercase 'a' is SINGLE-STOREY, NEVER suggest double-storey fonts (Gilroy, Poppins, Helvetica, Roboto, Inter)!
 
-3. Lowercase 'v' & 'V':
-   - Bottom vertex: Crisp, acute, sharp convergence.
+3. Letter 'e' (CRITICAL SERIF / CROSSBAR ANGLE CHECK):
+   - Is the crossbar inside the eye of 'e' SLANTED / ANGLED DIAGONALLY upwards at ~15-25° (Venetian / Calligraphic luxury serif, e.g. Ogg Roman, Roslindale, Faustina, ITC Galliard)?
+   - Or is it strictly FLAT HORIZONTAL (e.g. Cormorant Display, Didot, Bodoni, Playfair Display, Garamond)?
+   - ⚠️ STRICT NEGATIVE CONSTRAINT: If the letter 'e' has a SLANTED / ANGLED diagonal crossbar, you are STRICTLY FORBIDDEN from suggesting fonts with flat horizontal crossbars (such as Cormorant Display, Didot, Bodoni, or Playfair)!
 
-4. Lowercase 'i' & 'j':
-   - Tittle: Perfectly circular dot positioned cleanly above a straight vertical stem.
+4. Capital 'N' (Serif junctions & contrast):
+   - Check stroke contrast between thin vertical and thick diagonal, and bracketed serif terminals.
 
-5. Signatures in Fashion & Apparel Branding (e.g. Fabrilife "Aviana"):
-   - Top primary match for flat-topped 'A' + single-storey straight-drop 'a' + round dot 'i':
-     1. **Nexa** (by Fontfabric) - The quintessential modern fashion/branding geometric sans.
-     2. **Urbanist** (Google Fonts) - The exact open-source geometric twin of Nexa.
-     3. **Campton** (by René Bieder)
-     4. **Mont** (by Fontfabric)
-     5. **Sofia Pro** (Adobe / Mostardesign)
+5. Signatures in Fashion, Apparel & Editorial Branding:
+   - **For High-Contrast Luxury Display Serifs with angled 'e' crossbar (e.g. Fabrilife "Neith"):**
+     1. **Ogg Roman** (Sharp Type) - Top signature luxury fashion serif with angled 'e' crossbar and calligraphic terminals.
+     2. **Roslindale Display** (DJR) - High-contrast editorial serif with slanted 'e' crossbar.
+     3. **Faustina** (Google Fonts) - Best free Google Font alternative with angled 'e' crossbar.
+     4. **ITC Galliard** (ITC / Matthew Carter)
+   - **For Geometric Sans with flat-topped 'A' + single-storey 'a' (e.g. Fabrilife "Aviana"):**
+     1. **Nexa** (Fontfabric)
+     2. **Urbanist** (Google Fonts)
+     3. **Campton**
+     4. **Mont**
 
 OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
 {
