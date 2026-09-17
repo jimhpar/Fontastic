@@ -48,41 +48,36 @@ Analyze this cropped image of text with microscopic typographic precision.
 ${userCorrectedText ? `User hint / corrected text: "${userCorrectedText}".` : ''}
 
 CRITICAL FORENSIC METHODOLOGY & ZERO-HALLUCINATION RULES:
-Never guess common default fonts (like Helvetica, Arial, Roboto, or standard Gilroy/Poppins) unless every microscopic detail matches 100%. Fashion banners, cosmetics, apparel, luxury, and streetwear brands deliberately use distinctive geometric, editorial, or fashion display typefaces with unique letterform traits.
+Never guess random default fonts unless every microscopic detail matches 100%. Fashion banners, cosmetics, apparel, and modern e-commerce brands (such as Fabrilife, Zara, Mango) use signature geometric typefaces like Nexa, Urbanist, Campton, Mont, or Sofia Pro.
 
 STEP 1: MICROSCOPIC GLYPH-BY-GLYPH FORENSICS:
 
-1. Letter 'a' (Lowercase) - CRITICAL FIRST CHECK:
-   - Is it SINGLE-STOREY ('ɑ' - a clean circle or oval with a vertical right stem, NO top hook)?
-     * Examples: Century Gothic, Futura, Sofia Pro, ITC Avant Garde, Nexa, Josefin Sans, Avenir, Tenor Sans, Product Sans, Comfortaa, Circular.
-   - Or is it DOUBLE-STOREY ('a' - has a top curved hood/arc over the bowl)?
-     * Examples: Gilroy, Poppins, Helvetica, Inter, Roboto, Gotham, Proxima Nova.
-   - ⚠️ STRICT RULE: If the letter 'a' in the image is SINGLE-STOREY, you are STRICTLY FORBIDDEN from suggesting Gilroy, Poppins, Helvetica, Roboto, or Inter as matches!
+1. Capital 'A' (CRITICAL APEX CHECK):
+   - Is the apex a TRUNCATED FLAT-TOPPED PLATEAU (a flat horizontal cut at the top, e.g. Nexa, Urbanist, Campton, Mont, Avenir, Poppins)?
+   - Or is the apex a SHARP POINTED TRIANGLE / NEEDLE (e.g. Futura, Century Gothic, Tenor Sans, Avant Garde)?
+   - ⚠️ STRICT NEGATIVE CONSTRAINT: If capital 'A' has a FLAT-TOPPED horizontal plateau, you are STRICTLY FORBIDDEN from suggesting sharp-pointed fonts like Tenor Sans, Futura, or Century Gothic!
 
-2. Letter 'v' / 'V' & 'w' / 'W' (Vertices & Apex):
-   - Bottom vertex of 'v'/'V': Is it an ULTRA-SHARP acute needle/pinpoint vertex? Or does it have a blunt, flat horizontal cut, or rounded corner?
-   - Stroke weighting of 'v': Is the left stroke heavy and right stroke thin/hairline, or uniform monoline?
-   - Vertices of 'w'/'W': Sharp points vs flat horizontal bases. Does the center vertex meet at the top cap-height, or remain lower?
+2. Lowercase 'a' (SINGLE-STOREY VS DOUBLE-STOREY):
+   - Is it SINGLE-STOREY ('ɑ' - geometric circular bowl with vertical right stem, NO top hook)?
+     * Check the bottom terminal of the stem:
+       - Straight vertical baseline drop without tail or spur (e.g. Nexa, Urbanist, Futura, Campton).
+       - Outward curved tail / spur (e.g. Sofia Pro, Comfortaa).
+   - Or is it DOUBLE-STOREY ('a' - has a top curved hood/arc over the bowl, e.g. Gilroy, Poppins, Helvetica, Inter, Roboto)?
+   - ⚠️ STRICT RULE: If lowercase 'a' is SINGLE-STOREY, NEVER suggest double-storey fonts (Gilroy, Poppins, Helvetica, Roboto, Inter)!
 
-3. Letter 'A' (Capital):
-   - Apex: Sharp pointed needle apex (sharp triangle), blunt flat-top horizontal cut, or rounded?
-   - Crossbar position: Low fashion crossbar (e.g. Josefin Sans, Tenor Sans, Century Gothic, Marcellus) vs centered crossbar?
+3. Lowercase 'v' & 'V':
+   - Bottom vertex: Crisp, acute, sharp convergence.
 
-4. Letter 'i' & 'j' (Tittle / Dot):
-   - Shape of dot: Is it a perfect circular dot, a square/rectangular block, a diamond, or an oval?
-   - Spacing: Does the dot float high above the stem or sit tight?
+4. Lowercase 'i' & 'j':
+   - Tittle: Perfectly circular dot positioned cleanly above a straight vertical stem.
 
-5. Letter 'R' & 'k' (Legs):
-   - Is the leg of 'R' a STRAIGHT DIAGONAL stroke (e.g. Montserrat, Futura, Sofia, Avant Garde, DIN)?
-   - Or is it a CURVED leg with a horizontal foot hook (e.g. Helvetica, Neue Haas)?
-
-6. Letter 't':
-   - Top cut: Flat horizontal cut, diagonal angle cut, or pointed?
-   - Base: Does it curve to the right, or is it a straight vertical cross?
-
-7. General Aesthetics & Foundries:
-   - Fashion / Editorial / Luxury: Tenor Sans, Sofia Pro, Century Gothic, Josefin Sans, Futura, Avenir, Classico, Didot, Bodoni, Cormorant, Syne, Tan Aegean, Voyage, Playfair.
-   - Streetwear / Athletic / Tech: Akira Expanded, Integral CF, Space Grotesk, Druk Wide, Tusker Grotesk, Microgramma, Orbitron, Prompt, Michroma.
+5. Signatures in Fashion & Apparel Branding (e.g. Fabrilife "Aviana"):
+   - Top primary match for flat-topped 'A' + single-storey straight-drop 'a' + round dot 'i':
+     1. **Nexa** (by Fontfabric) - The quintessential modern fashion/branding geometric sans.
+     2. **Urbanist** (Google Fonts) - The exact open-source geometric twin of Nexa.
+     3. **Campton** (by René Bieder)
+     4. **Mont** (by Fontfabric)
+     5. **Sofia Pro** (Adobe / Mostardesign)
 
 OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
 {
@@ -94,7 +89,7 @@ OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
     "weight": "thin | light | regular | medium | bold | black",
     "contrast": "monoline | low | medium | high",
     "serifType": "none | bracketed | unbracketed | slab",
-    "glyphForensics": "Describe specifically: (1) single vs double-storey 'a', (2) sharpness of 'v' vertex, (3) apex and crossbar of 'A', (4) dot of 'i'",
+    "glyphForensics": "Describe: (1) flat-topped vs pointed apex on 'A', (2) single-storey 'a' with straight drop vs curved tail, (3) sharp vertex on 'v', (4) circular dot on 'i'",
     "description": "Concise forensic summary of why this font was identified"
   },
   "matches": [
@@ -104,10 +99,10 @@ OUTPUT FORMAT: Return ONLY pure raw JSON (no markdown blocks, no preamble):
       "source": "google | dafont | adobe | myfonts",
       "similarity": 98,
       "matchedFeatures": [
-        "Single-storey lowercase 'a' with vertical right stem",
-        "Ultra-sharp acute pinpoint bottom vertex on 'v'",
-        "Pointed sharp apex on capital 'A'",
-        "Matching geometric circular proportions"
+        "Truncated flat-topped horizontal apex on capital 'A'",
+        "Single-storey lowercase 'a' with straight vertical drop",
+        "Sharp acute bottom vertex on 'v'",
+        "Circular tittle on 'i'"
       ],
       "downloadUrl": "direct specimen or download url",
       "previewUrl": "preview url"
